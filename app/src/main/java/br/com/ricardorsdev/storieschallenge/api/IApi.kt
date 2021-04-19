@@ -1,10 +1,9 @@
-package br.com.ricardorsdev.api
+package br.com.ricardorsdev.storieschallenge.api
 
 import br.com.ricardorsdev.storieschallenge.models.ImageResponse
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Query
 
 interface IApi {
 

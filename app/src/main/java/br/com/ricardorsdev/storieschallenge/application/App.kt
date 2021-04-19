@@ -1,4 +1,4 @@
-package br.com.ricardorsdev
+package br.com.ricardorsdev.storieschallenge.application
 
 import android.app.Application
 import com.facebook.stetho.Stetho

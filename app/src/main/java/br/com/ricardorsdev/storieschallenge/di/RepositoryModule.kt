@@ -1,6 +1,6 @@
-package br.com.ricardorsdev.di
+package br.com.ricardorsdev.storieschallenge.di
 
-import br.com.ricardorsdev.api.IApi
+import br.com.ricardorsdev.storieschallenge.api.IApi
 import br.com.ricardorsdev.storieschallenge.network.IMainRepository
 import br.com.ricardorsdev.storieschallenge.network.MainRepository
 import dagger.Module
