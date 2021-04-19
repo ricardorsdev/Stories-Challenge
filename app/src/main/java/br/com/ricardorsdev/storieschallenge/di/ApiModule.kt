@@ -7,6 +7,7 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityRetainedComponent
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -14,17 +15,15 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class)
+@InstallIn(ActivityRetainedComponent::class)
 object ApiModule {
 
 	@Provides
-	@Singleton
 	fun providesOkHttpClient() : OkHttpClient = OkHttpClient.Builder()
 			.addNetworkInterceptor(StethoInterceptor())
 			.build()
 
 	@Provides
-	@Singleton
 	fun providesRetrofit(): Retrofit = Retrofit.Builder()
 			.baseUrl(Constants.BASE_URL)
 			.client(providesOkHttpClient())
@@ -33,7 +32,6 @@ object ApiModule {
 			.build()
 
 	@Provides
-	@Singleton
 	fun provideApi(retrofit: Retrofit): IApi = retrofit.create(IApi::class.java)
 
 }

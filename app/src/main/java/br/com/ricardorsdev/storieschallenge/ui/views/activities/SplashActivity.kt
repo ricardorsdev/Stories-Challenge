@@ -16,7 +16,13 @@ class SplashActivity : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_splash)
 
+		setObservers()
 		viewModel.getStoriesData()
+	}
 
+	private fun setObservers() {
+		viewModel.state.observe(this, {
+			viewModel.getImages()
+		})
 	}
 }
