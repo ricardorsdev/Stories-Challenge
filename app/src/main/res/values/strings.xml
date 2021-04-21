@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Stories-Challenge</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_finish">That\'s all!\nThanks for supporting us!</string>
+    <string name="finish_info_restart">Click here\nto restart</string>
+    <string name="title_start">Welcome to\nStories App!</string>
+    <string name="start_info_start">Click here\nto start/go\nto next story</string>
+    <string name="start_info_return">Click here\nto return\nto previous story</string>
 </resources>

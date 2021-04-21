@@ -17,9 +17,9 @@ import kotlinx.android.synthetic.main.view_stories.view.*
 
 
 class StoriesView @JvmOverloads constructor(
-		context: Context,
-		attributeSet: AttributeSet? = null,
-		defStyleAttr: Int = 0
+	context: Context,
+	attributeSet: AttributeSet? = null,
+	defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attributeSet, defStyleAttr) {
 
 	var imageList: List<ImageEntity> = mutableListOf()
@@ -28,6 +28,8 @@ class StoriesView @JvmOverloads constructor(
 			setUpProgress()
 			updateStoriesView()
 		}
+
+	var listener: StoriesViewListener? = null
 
 	private var imagePosition = 0
 	private var imageType = PHOTO
@@ -45,6 +47,8 @@ class StoriesView @JvmOverloads constructor(
 				if (imagePosition < imageList.lastIndex) {
 					imagePosition++
 					updateStoriesView()
+				} else {
+					listener?.onFinishListener()
 				}
 			}
 
@@ -52,6 +56,8 @@ class StoriesView @JvmOverloads constructor(
 				if (imagePosition > 0) {
 					imagePosition--
 					updateStoriesView()
+				} else {
+					listener?.onReturnListener()
 				}
 			}
 
@@ -59,6 +65,7 @@ class StoriesView @JvmOverloads constructor(
 
 			}
 		}
+
 	}
 
 	private fun setUpProgress() {
@@ -94,11 +101,11 @@ class StoriesView @JvmOverloads constructor(
 				binding.ivStories.visibility = View.VISIBLE
 				binding.vvStories.visibility = View.GONE
 				Glide.with(context)
-						.load(imageList[imagePosition].url)
-						.centerCrop()
-						.error(R.drawable.ic_broken_image)
-						.diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-						.into(binding.ivStories)
+					.load(imageList[imagePosition].url)
+					.centerCrop()
+					.error(R.drawable.ic_broken_image)
+					.diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+					.into(binding.ivStories)
 			}
 			VIDEO -> {
 				binding.ivStories.visibility = View.GONE
@@ -115,7 +122,6 @@ class StoriesView @JvmOverloads constructor(
 			}
 		}
 	}
-
 
 	companion object {
 		const val PHOTO = "Photo"
