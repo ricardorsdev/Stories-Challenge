@@ -39,8 +39,8 @@ class SplashViewModel @ViewModelInject constructor(
 				db.imageDao().insertAll(
 						ImageEntity(
 								id = image.id,
-								url = image.url,
-								largeUrl = image.largeUrl
+								url = image.url.substringBefore("%3F"),
+								largeUrl = image.largeUrl.substringBefore("%3F")
 						)
 				)
 			}

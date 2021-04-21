@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import br.com.ricardorsdev.storieschallenge.R
 import br.com.ricardorsdev.storieschallenge.ui.viewModels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
 	private fun setObservers() {
 		viewModel.imageListObservable.observe(this, {
-
+			storiesView.imageList = it
 		})
 	}
 }

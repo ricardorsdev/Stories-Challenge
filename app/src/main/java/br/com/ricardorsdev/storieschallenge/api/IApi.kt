@@ -7,7 +7,7 @@ import retrofit2.http.GET
 
 interface IApi {
 
-	@GET(" /api/v1/images/latest")
+	@GET("/api/v1/images/latest")
 	fun getLatestImagesAsync(): Deferred<Response<ImageResponse>>
 
 }
